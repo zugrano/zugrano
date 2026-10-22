@@ -226,6 +226,46 @@ footer a:hover{color:var(--corn)}
 @keyframes bump{to{transform:translateY(-1.5px)}}
 @media (prefers-reduced-motion:reduce){.truck{animation:none;transform:translateX(var(--x,20%))}.truck svg{animation:none}.road .dash{animation:none}}
 @media (max-width:600px){.truck{--d:12s}.truck.back{--d:15s}}
+
+/* ======================================================================
+   MEDIA QUERIES PARA TELÉFONOS — escalado de imágenes
+   Ajusta el tamaño de cada imagen al ancho de la pantalla del teléfono.
+   ====================================================================== */
+
+/* Teléfonos grandes y pequeños (≤600px) */
+@media (max-width:600px){
+  /* Toda imagen nunca excede el ancho disponible y conserva su proporción */
+  img{max-width:100%;height:auto}
+  /* Hero: el fondo de ajo se reencuadra hacia arriba para no cortar texto */
+  .hero{background-position:54% top}
+  .hero .wm{font-size:clamp(40px,13vw,64px)}
+  /* Imagen de trayectoria: proporción más compacta en vertical */
+  .tray-img img{aspect-ratio:16/11}
+  /* Catálogo: 2 columnas y bowls más pequeños */
+  .grid{grid-template-columns:repeat(2,1fr);gap:22px 12px}
+  .prod .bowl{max-width:150px}
+  .prod .bowl.can{max-width:104px}
+}
+
+/* Teléfonos estándar (≤430px: iPhone, Pixel, Galaxy) */
+@media (max-width:430px){
+  .band{grid-template-columns:1fr 1fr}
+  .band img{height:146px}
+  .band img:first-child{grid-column:1 / -1;height:188px}
+  .prod .bowl{max-width:132px}
+  .prod .bowl.can{max-width:92px}
+  .tray-img img{aspect-ratio:3/2}
+  .cat .pres span{font-size:11px}
+}
+
+/* Teléfonos pequeños (≤340px) */
+@media (max-width:340px){
+  .grid{grid-template-columns:1fr;gap:20px}
+  .prod .bowl{max-width:190px}
+  .prod .bowl.can{max-width:120px}
+  .band img{height:128px}
+  .band img:first-child{height:160px}
+}
 </style>
 
 <script>try{document.body.dataset.l="es"}catch(e){}</script>
